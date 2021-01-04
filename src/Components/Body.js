@@ -1,14 +1,14 @@
 import React from "react"
+import { connect } from "react-redux"
 import getInitialGrid from "../HelperFunctions/initialGrid"
+import { setGrid } from "../Redux/actions"
 import Node from "./Node/Node"
 
 class Body extends React.Component {
-  state = {
-    grid: [],
-  }
   componentDidMount() {
     const grid = getInitialGrid()
-    this.setState({ grid })
+
+    this.props.dispatchGrid(grid)
   }
   render() {
     // console.log(this.state.grid)
@@ -16,7 +16,7 @@ class Body extends React.Component {
       <>
         <br></br>
         <div className="grid">
-          {this.state.grid.map((row, index) => {
+          {this.props.grid.map((row, index) => {
             return (
               <div key={index}>
                 {row.map((node, index) => {
@@ -29,7 +29,7 @@ class Body extends React.Component {
                       isStart={isStart}
                       isWall={isWall}
                       row={row}
-                    ></Node>
+                    />
                   )
                 })}
               </div>
@@ -41,4 +41,15 @@ class Body extends React.Component {
   }
 }
 
-export default Body
+function msp(state) {
+  return {
+    grid: state.grid,
+  }
+}
+function mdp(dispatch) {
+  return {
+    dispatchGrid: (gridArray) => dispatch(setGrid(gridArray)),
+  }
+}
+
+export default connect(msp, mdp)(Body)

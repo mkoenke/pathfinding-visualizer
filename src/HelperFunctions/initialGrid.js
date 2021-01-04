@@ -12,7 +12,7 @@ const getInitialGrid = () => {
     }
     grid.push(currentRow)
   }
-  console.log(grid)
+  // console.log(grid)
   return grid
 }
 const createNode = (col, row) => {
