@@ -7,7 +7,6 @@ import Node from "./Node/Node"
 class Body extends React.Component {
   componentDidMount() {
     const grid = getInitialGrid()
-
     this.props.dispatchGrid(grid)
   }
   render() {
