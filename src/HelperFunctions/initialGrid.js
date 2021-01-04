@@ -1,7 +1,7 @@
-const startRow = 2
-const startCol = 2
-const finishRow = 9
-const finishCol = 28
+export const startRow = 2
+export const startCol = 2
+export const finishRow = 9
+export const finishCol = 28
 
 const getInitialGrid = () => {
   const grid = []

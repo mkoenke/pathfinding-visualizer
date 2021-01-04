@@ -1,7 +1,26 @@
 import "materialize-css"
 import React from "react"
+import { connect } from "react-redux"
+import {
+  animateDijkstra,
+  Dijkstra,
+  getShortestPath,
+} from "../Algorithms/Dijkstra"
+import {
+  finishCol,
+  finishRow,
+  startCol,
+  startRow,
+} from "../HelperFunctions/initialGrid"
 
 class NavBar extends React.Component {
+  visualizeDijkstra() {
+    const startNode = this.props.grid[startRow][startCol]
+    const finishNode = this.props.grid[finishRow][finishCol]
+    const visitedNodes = Dijkstra(this.props.grid, startNode, finishNode)
+    const shortestPath = getShortestPath(finishNode)
+    animateDijkstra(visitedNodes, shortestPath)
+  }
   render() {
     return (
       <>
@@ -15,7 +34,9 @@ class NavBar extends React.Component {
             </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <li>
-                <div>Visualize Algorithm</div>
+                <div onClick={() => this.visualizeDijkstra()}>
+                  Visualize Algorithm
+                </div>
               </li>
             </ul>
           </div>
@@ -41,4 +62,10 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar
+function msp(state) {
+  return {
+    grid: state.grid,
+  }
+}
+
+export default connect(msp)(NavBar)

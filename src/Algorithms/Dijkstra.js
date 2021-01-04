@@ -55,3 +55,29 @@ export function getShortestPath(finishNode) {
   }
   return shortestPath
 }
+
+export function animateDijkstra(visitedNodes, shortestPath) {
+  for (let i = 0; i <= visitedNodes.length; i++) {
+    if (i === visitedNodes.length) {
+      setTimeout(() => {
+        animateShortestPath(shortestPath)
+      }, 10 * i)
+      return
+    }
+    setTimeout(() => {
+      const node = visitedNodes[i]
+      document.getElementById(`node-${node.row}-${node.col}`).className =
+        "node visited"
+    }, 10 * i)
+  }
+}
+
+export function animateShortestPath(shortestPath) {
+  for (let i = 0; i < shortestPath.length; i++) {
+    setTimeout(() => {
+      const node = shortestPath[i]
+      document.getElementById(`node-${node.row}-${node.col}`).className =
+        "node shortest-path"
+    }, 50 * i)
+  }
+}
