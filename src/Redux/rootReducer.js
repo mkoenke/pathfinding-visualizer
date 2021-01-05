@@ -1,8 +1,9 @@
 import { combineReducers } from "redux"
-import { SET_GRID } from "./actionTypes"
+import { SET_ALGORITHM, SET_GRID } from "./actionTypes"
 
 const defaultState = {
   grid: [],
+  algorithm: "dijkstra",
 }
 
 function gridReducer(prevState = defaultState.grid, action) {
@@ -14,8 +15,18 @@ function gridReducer(prevState = defaultState.grid, action) {
   }
 }
 
+function algorithmReducer(prevState = defaultState.algorithm, action) {
+  switch (action.type) {
+    case SET_ALGORITHM:
+      return action.payload
+    default:
+      return prevState
+  }
+}
+
 const rootReducer = combineReducers({
   grid: gridReducer,
+  algorithm: algorithmReducer,
 })
 
 export default rootReducer
