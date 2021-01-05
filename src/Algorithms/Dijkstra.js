@@ -1,4 +1,4 @@
-export function Dijkstra(grid, startNode, finishNode) {
+function Dijkstra(grid, startNode, finishNode) {
   const visitedNodes = []
   startNode.distance = 0
   const unvisitedNodes = getAllNodes(grid)
@@ -46,7 +46,7 @@ function getAllNodes(grid) {
   return allNodes
 }
 
-export function getShortestPath(finishNode) {
+function getShortestPath(finishNode) {
   const shortestPath = []
   let currentNode = finishNode
   while (currentNode !== null) {
@@ -56,7 +56,7 @@ export function getShortestPath(finishNode) {
   return shortestPath
 }
 
-export function animateDijkstra(visitedNodes, shortestPath) {
+function animateDijkstra(visitedNodes, shortestPath) {
   for (let i = 0; i <= visitedNodes.length; i++) {
     if (i === visitedNodes.length) {
       setTimeout(() => {
@@ -82,10 +82,26 @@ export function animateShortestPath(shortestPath) {
   }
 }
 
-// export visualizeDijkstra = () => {
-//     const startNode = this.props.grid[startRow][startCol]
-//     const finishNode = this.props.grid[finishRow][finishCol]
-//     const visitedNodes = Dijkstra(this.props.grid, startNode, finishNode)
-//     const shortestPath = getShortestPath(finishNode)
-//     animateDijkstra(visitedNodes, shortestPath)
-//   }
+function nodeHelper(grid, node) {
+  let temp
+  for (let row of grid) {
+    for (let col of row) {
+      if (node === "start" && col.isStart) {
+        temp = col
+      } else if (node === "finish" && col.isFinish) {
+        temp = col
+      }
+    }
+  }
+  return temp
+}
+
+export function visualizeDijkstra(grid) {
+
+  let startNode = nodeHelper(grid, "start")
+  let finishNode = nodeHelper(grid, "finish")
+
+  const visitedNodes = Dijkstra(grid, startNode, finishNode)
+  const shortestPath = getShortestPath(finishNode)
+  animateDijkstra(visitedNodes, shortestPath)
+}

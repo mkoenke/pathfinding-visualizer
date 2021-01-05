@@ -1,29 +1,16 @@
 import "materialize-css"
 import React from "react"
+import { createPortal } from "react-dom"
 import { connect } from "react-redux"
-// import {
-//   animateDijkstra,
-//   Dijkstra,
-//   getShortestPath,
-// } from "../Algorithms/Dijkstra"
 import {
-  //   finishCol,
-  //   finishRow,
-  //   startCol,
-  //   startRow,
+  visualizeDijkstra
+} from "../Algorithms/Dijkstra"
+import {
   resetGrid,
 } from "../HelperFunctions/initialGrid"
 import { setAlgorithm, setGrid } from "../Redux/actions"
 
 class NavBar extends React.Component {
-  //   visualizeDijkstra = () => {
-  //     const startNode = this.props.grid[startRow][startCol]
-  //     const finishNode = this.props.grid[finishRow][finishCol]
-  //     const visitedNodes = Dijkstra(this.props.grid, startNode, finishNode)
-  //     const shortestPath = getShortestPath(finishNode)
-  //     animateDijkstra(visitedNodes, shortestPath)
-  //   }
-
   handleNewGrid = () => {
     resetGrid()
     // const grid = getInitialGrid()
@@ -36,18 +23,18 @@ class NavBar extends React.Component {
 
   handleVisualize = () => {
     let currentAlgorithm = this.props.algorithm
+    let grid = this.props.grid
     switch (currentAlgorithm) {
       case "dijkstra":
-        return this.visualizeDijkstra()
-      //   case "a*":
-      //     return this.visualizeA()
-      //   case "bfs":
-      //     return visualizeBFS()
-      //   case "dfs":
-      //     return visualizeDFS()
-
+        visualizeDijkstra(grid)
+      // case "a*":
+      //   visualizeA(grid)
+      // case "bfs":
+      //   visualizeBFS(grid)
+      // case "dfs":
+      //   visualizeDFS(grid)
       default:
-        return this.visualizeDijkstra()
+        visualizeDijkstra(grid)
     }
   }
 

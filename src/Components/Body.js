@@ -9,9 +9,9 @@ class Body extends React.Component {
     mousePressed: false,
     startNode: false,
     finishNode: false,
-    startRow: 2,
-    startCol: 2,
-    finishRow: 9,
+    startRow: 1,
+    startCol: 1,
+    finishRow: 8,
     finishCol: 28
   }
   componentDidMount() {
@@ -51,7 +51,6 @@ class Body extends React.Component {
       const newGrid = gridWithWall(this.props.grid, row, col)
       this.props.dispatchGrid(newGrid)
     }
-    console.log(this.state.finishRow, this.state.finishCol)
   }
 
 
@@ -65,7 +64,6 @@ class Body extends React.Component {
   }
 
   render() {
-    // console.log(this.state.grid)
     return (
       <>
         <br></br>
