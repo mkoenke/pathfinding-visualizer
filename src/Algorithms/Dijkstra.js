@@ -81,3 +81,11 @@ export function animateShortestPath(shortestPath) {
     }, 50 * i)
   }
 }
+
+// export visualizeDijkstra = () => {
+//     const startNode = this.props.grid[startRow][startCol]
+//     const finishNode = this.props.grid[finishRow][finishCol]
+//     const visitedNodes = Dijkstra(this.props.grid, startNode, finishNode)
+//     const shortestPath = getShortestPath(finishNode)
+//     animateDijkstra(visitedNodes, shortestPath)
+//   }
