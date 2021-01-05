@@ -17,25 +17,26 @@ const resetGrid = () => {
   window.location.reload(true)
 }
 
-const getInitialGrid = () => {
-  console.log("initial grid")
+const getInitialGrid = (bodyState) => {
   const grid = []
   for (let row = 0; row < 10; row++) {
     const currentRow = []
     for (let col = 0; col < 30; col++) {
-      currentRow.push(createNode(col, row))
+      currentRow.push(createNode(col, row, bodyState))
     }
     grid.push(currentRow)
   }
   // console.log(grid)
   return grid
 }
-const createNode = (col, row) => {
+
+const createNode = (col, row, bodyState) => {
+  console.log(bodyState.finishRow, bodyState.finishCol)
   return {
     col,
     row,
-    isStart: row === startRow && col === startCol,
-    isFinish: row === finishRow && col === finishCol,
+    isStart: row === bodyState.startRow && col === bodyState.startCol,
+    isFinish: row === bodyState.finishRow && col === bodyState.finishCol,
     distance: Infinity,
     isVisited: false,
     isWall: false,
@@ -43,6 +44,9 @@ const createNode = (col, row) => {
   }
 }
 
+
+//maybe need to update this function so that it works for all adjustments
+//and not just with the walls. make it dynamic with conditionals
 const gridWithWall = (grid, row, col) => {
   const newGrid = [...grid]
   const node = newGrid[row][col]

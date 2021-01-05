@@ -7,28 +7,63 @@ import Node from "./Node/Node"
 class Body extends React.Component {
   state = {
     mousePressed: false,
+    startNode: false,
+    finishNode: false,
+    startRow: 2,
+    startCol: 2,
+    finishRow: 9,
+    finishCol: 28
   }
   componentDidMount() {
-    const grid = getInitialGrid()
+    const grid = getInitialGrid(this.state)
     this.props.dispatchGrid(grid)
   }
 
   handleMouseDown = (row, col) => {
-    // console.log("handle mouse down", row, col)
     this.setState({ mousePressed: true })
-    const newGrid = gridWithWall(this.props.grid, row, col)
-    this.props.dispatchGrid(newGrid)
+
+    let tempNode = this.props.grid[row][col]
+
+    if (tempNode.isStart !== true && tempNode.isFinish !== true) {
+      let newGrid = gridWithWall(this.props.grid, row, col)
+      this.props.dispatchGrid(newGrid)
+    } else if (tempNode.isStart === true) {
+      this.setState({ startNode: true })
+    } else if (tempNode.isFinish === true) {
+      this.setState({ finishNode: true })
+    }
   }
+
   handleMouseEnter = (row, col) => {
-    // console.log("handle mouse enter", row, col)
     if (!this.state.mousePressed) return
-    const newGrid = gridWithWall(this.props.grid, row, col)
-    this.props.dispatchGrid(newGrid)
+
+    if (this.state.startNode) {
+      this.setState({ startRow: row, startCol: col }, () => {
+        const grid = getInitialGrid(this.state)
+        this.props.dispatchGrid(grid)
+      })
+    } else if (this.state.finishNode) {
+      this.setState({ finishRow: row, finishCol: col }, () => {
+        const grid = getInitialGrid(this.state)
+        this.props.dispatchGrid(grid)
+      })
+    } else {
+      const newGrid = gridWithWall(this.props.grid, row, col)
+      this.props.dispatchGrid(newGrid)
+    }
+    console.log(this.state.finishRow, this.state.finishCol)
   }
+
 
   handleMouseUp = () => {
     this.setState({ mousePressed: false })
+    if (this.state.startNode) {
+      this.setState({ startNode: false })
+    } else if (this.state.finishNode) {
+      this.setState({ finishNode: false })
+    }
   }
+
   render() {
     // console.log(this.state.grid)
     return (
