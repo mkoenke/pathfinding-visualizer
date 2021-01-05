@@ -9,22 +9,34 @@ import {
 import {
   finishCol,
   finishRow,
+  //   getInitialGrid,
+  resetGrid,
   startCol,
   startRow,
 } from "../HelperFunctions/initialGrid"
+import { setGrid } from "../Redux/actions"
 
 class NavBar extends React.Component {
-  visualizeDijkstra() {
+  visualizeDijkstra = () => {
     const startNode = this.props.grid[startRow][startCol]
     const finishNode = this.props.grid[finishRow][finishCol]
     const visitedNodes = Dijkstra(this.props.grid, startNode, finishNode)
     const shortestPath = getShortestPath(finishNode)
     animateDijkstra(visitedNodes, shortestPath)
   }
+  handleNewGrid = () => {
+    console.log("clicked")
+    resetGrid()
+    // const grid = getInitialGrid()
+    // this.props.dispatchGrid(grid)
+  }
   render() {
     return (
       <>
-        <nav class="nav-extended">
+        <nav
+          class="nav-extended"
+          style={{ backgroundColor: "rgb(52, 157, 238)" }}
+        >
           <div class="nav-wrapper">
             <a href="#" class="brand-logo">
               Pathfinding Algorithm Visualizer
@@ -34,9 +46,10 @@ class NavBar extends React.Component {
             </a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <li>
-                <div onClick={() => this.visualizeDijkstra()}>
-                  Visualize Algorithm
-                </div>
+                <div onClick={this.visualizeDijkstra}>Visualize Algorithm</div>
+              </li>
+              <li>
+                <div onClick={this.handleNewGrid}>New Grid</div>
               </li>
             </ul>
           </div>
@@ -67,5 +80,10 @@ function msp(state) {
     grid: state.grid,
   }
 }
+function mdp(dispatch) {
+  return {
+    dispatchGrid: (gridArray) => dispatch(setGrid(gridArray)),
+  }
+}
 
-export default connect(msp)(NavBar)
+export default connect(msp, mdp)(NavBar)
