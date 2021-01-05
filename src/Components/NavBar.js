@@ -1,5 +1,6 @@
 import "materialize-css"
 import React from "react"
+import { createPortal } from "react-dom"
 import { connect } from "react-redux"
 import {
   animateDijkstra,
@@ -18,18 +19,22 @@ import { setGrid } from "../Redux/actions"
 
 class NavBar extends React.Component {
   visualizeDijkstra = () => {
-    const startNode = this.props.grid[startRow][startCol]
-    const finishNode = this.props.grid[finishRow][finishCol]
+
+    let startNode = nodeHelper(this.props.grid, "start")
+    let finishNode = nodeHelper(this.props.grid, "finish")
+
     const visitedNodes = Dijkstra(this.props.grid, startNode, finishNode)
     const shortestPath = getShortestPath(finishNode)
     animateDijkstra(visitedNodes, shortestPath)
   }
+
   handleNewGrid = () => {
     console.log("clicked")
     resetGrid()
     // const grid = getInitialGrid()
     // this.props.dispatchGrid(grid)
   }
+
   render() {
     return (
       <>
@@ -73,6 +78,20 @@ class NavBar extends React.Component {
       </>
     )
   }
+}
+
+function nodeHelper(grid, node) {
+  let temp
+  for (let row of grid) {
+    for (let col of row) {
+      if (node === "start" && col.isStart) {
+        temp = col
+      } else if (node === "finish" && col.isFinish) {
+        temp = col
+      }
+    }
+  }
+  return temp
 }
 
 function msp(state) {
