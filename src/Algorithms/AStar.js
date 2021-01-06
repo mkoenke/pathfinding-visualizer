@@ -5,27 +5,27 @@ function AStar(grid, startNode, finishNode) {
   unvisitedNodes.push(startNode)
   while (unvisitedNodes.length !== 0) {
     unvisitedNodes.sort((a, b) => a.totalDistance - b.totalDistance)
-    let closestNode = unvisitedNodes.shift()
-    if (closestNode === finishNode) return visitedNodes
+    let nextNode = unvisitedNodes.shift()
+    if (nextNode === finishNode) return visitedNodes
 
-    closestNode.isVisited = true
-    visitedNodes.push(closestNode)
+    nextNode.isVisited = true
+    visitedNodes.push(nextNode)
 
-    let neighbors = getNeighbors(closestNode, grid)
+    let neighbors = getNeighbors(nextNode, grid)
     for (let neighbor of neighbors) {
-      let distance = closestNode.distance + 1
+      let distance = nextNode.distance + 1
       //f(n) = g(n) + h(n)
       if (neighborNotInUnvisitedNodes(neighbor, unvisitedNodes)) {
         unvisitedNodes.unshift(neighbor)
         neighbor.distance = distance
         neighbor.totalDistance =
           distance + manhattanDistance(neighbor, finishNode)
-        neighbor.previousNode = closestNode
+        neighbor.previousNode = nextNode
       } else if (distance < neighbor.distance) {
         neighbor.distance = distance
         neighbor.totalDistance =
           distance + manhattanDistance(neighbor, finishNode)
-        neighbor.previousNode = closestNode
+        neighbor.previousNode = nextNode
       }
     }
   }
