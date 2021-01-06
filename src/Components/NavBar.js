@@ -1,13 +1,10 @@
 import "materialize-css"
 import React from "react"
-import { createPortal } from "react-dom"
+// import { createPortal } from "react-dom"
 import { connect } from "react-redux"
-import {
-  visualizeDijkstra
-} from "../Algorithms/Dijkstra"
-import {
-  resetGrid,
-} from "../HelperFunctions/initialGrid"
+import { visualizeDepthFirstSearch } from "../Algorithms/DepthFirstSearch"
+import { visualizeDijkstra } from "../Algorithms/Dijkstra"
+import { resetGrid } from "../HelperFunctions/initialGrid"
 import { setAlgorithm, setGrid } from "../Redux/actions"
 
 class NavBar extends React.Component {
@@ -23,17 +20,21 @@ class NavBar extends React.Component {
 
   handleVisualize = () => {
     let currentAlgorithm = this.props.algorithm
+    console.log(currentAlgorithm)
     let grid = this.props.grid
     switch (currentAlgorithm) {
       case "dijkstra":
+        console.log("dijkstra")
         visualizeDijkstra(grid)
       // case "a*":
       //   visualizeA(grid)
       // case "bfs":
       //   visualizeBFS(grid)
-      // case "dfs":
-      //   visualizeDFS(grid)
+      case "dfs":
+        console.log("dfs")
+        visualizeDepthFirstSearch(grid)
       default:
+        console.log("default")
         visualizeDijkstra(grid)
     }
   }
@@ -92,7 +93,7 @@ class NavBar extends React.Component {
 function msp(state) {
   return {
     grid: state.grid,
-    algo: state.algo,
+    algorithm: state.algorithm,
   }
 }
 function mdp(dispatch) {
