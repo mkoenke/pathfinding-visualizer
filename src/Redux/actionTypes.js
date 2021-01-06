@@ -1,2 +1,6 @@
 export const SET_GRID = "SET_GRID"
 export const SET_ALGORITHM = "SET_ALGORITHM"
+export const SET_IS_RUNNING = "SET_IS_RUNNING"
+export const SET_FINISHED_RUNNING = "SET_FINISHED_RUNNING"
+export const ON_INFO = "ON_INFO"
+export const OFF_INFO = "OFF_INFO"

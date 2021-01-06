@@ -110,7 +110,8 @@ function nodeHelper(grid, node) {
   return temp
 }
 
-export function visualizeAStar(grid) {
+export function visualizeAStar(props) {
+  let grid = props.grid
   let startNode = nodeHelper(grid, "start")
   let finishNode = nodeHelper(grid, "finish")
   console.log("start Node:", startNode)
@@ -119,4 +120,5 @@ export function visualizeAStar(grid) {
   const visitedNodes = AStar(grid, startNode, finishNode)
   const shortestPath = getShortestPath(finishNode)
   animateAStar(visitedNodes, shortestPath)
+  props.dispatchSetFinishedRunning()
 }

@@ -81,11 +81,13 @@ function nodeHelper(grid, node) {
   return temp
 }
 
-export function visualizeDepthFirstSearch(grid) {
+export function visualizeDepthFirstSearch(props) {
+  let grid = props.grid
   let startNode = nodeHelper(grid, "start")
   let finishNode = nodeHelper(grid, "finish")
 
   const visitedNodes = DepthFirstSearch(grid, startNode, finishNode)
   const shortestPath = getShortestPath(finishNode)
   animateDepthFirstSearch(visitedNodes, shortestPath)
+  props.dispatchSetFinishedRunning()
 }

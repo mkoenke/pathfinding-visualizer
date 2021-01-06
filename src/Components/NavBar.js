@@ -7,7 +7,14 @@ import { visualizeAStar } from "../Algorithms/AStar"
 import { visualizeDepthFirstSearch } from "../Algorithms/DepthFirstSearch"
 import { visualizeDijkstra } from "../Algorithms/Dijkstra"
 import { resetGrid } from "../HelperFunctions/initialGrid"
-import { setAlgorithm, setGrid } from "../Redux/actions"
+import {
+  setAlgorithm,
+  setFinishedRunning,
+  setGrid,
+  setIsRunning,
+  setOffInfo,
+  setOnInfo,
+} from "../Redux/actions"
 
 class NavBar extends React.Component {
   handleNewGrid = () => {
@@ -18,23 +25,30 @@ class NavBar extends React.Component {
 
   setAlgorithm = (algo) => {
     this.props.dispatchSetAlgorithm(algo)
+    this.props.dispatchSetOffInfo()
+  }
+
+  handleOnInfo = () => {
+    this.props.dispatchSetOnInfo()
   }
 
   handleVisualize = () => {
+    this.props.dispatchSetOffInfo()
+    this.props.dispatchSetIsRunning()
+    console.log("Running")
     let currentAlgorithm = this.props.algorithm
     let grid = this.props.grid
     switch (currentAlgorithm) {
       case "dijkstra":
-        visualizeDijkstra(grid)
+        return visualizeDijkstra(this.props)
       case "a*":
-        console.log("A Star")
-        visualizeAStar(grid)
+        return visualizeAStar(this.props)
       // case "bfs":
       //   visualizeBFS(grid)
       case "dfs":
-        visualizeDepthFirstSearch(grid)
+        return visualizeDepthFirstSearch(this.props)
       default:
-        visualizeDijkstra(grid)
+        return visualizeDijkstra(this.props)
     }
   }
 
@@ -49,19 +63,17 @@ class NavBar extends React.Component {
             <a href="#" class="brand-logo">
               Pathfinding Algorithm Visualizer
             </a>
-            {/* <a href="#" data-target="mobile-demo" class="sidenav-trigger">
-              <i class="material-icons">menu</i>
-            </a> */}
+
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <li>
                 <NavLink to="/">
                   <div
-                    onClick={this.handleVisualize}
-                    // style={
-                    //   this.props.onInfo
-                    //     ? { display: "none" }
-                    //     : { display: "block" }
-                    // }
+                    onClick={this.props.isRunning ? null : this.handleVisualize}
+                    style={
+                      this.props.onInfo
+                        ? { display: "none" }
+                        : { display: "block" }
+                    }
                   >
                     Visualize Algorithm
                   </div>
@@ -78,26 +90,52 @@ class NavBar extends React.Component {
             <ul class="tabs tabs-transparent">
               <li class="tab">
                 <NavLink to="/">
-                  <div onClick={() => this.setAlgorithm("dijkstra")}>
+                  <div
+                    onClick={
+                      this.props.isRunning
+                        ? null
+                        : () => this.setAlgorithm("dijkstra")
+                    }
+                  >
                     Dijkstra'S Algorithm
                   </div>
                 </NavLink>
               </li>
               <li class="tab">
                 <NavLink to="/">
-                  <div onClick={() => this.setAlgorithm("a*")}>A*</div>
+                  <div
+                    onClick={
+                      this.props.isRunning
+                        ? null
+                        : () => this.setAlgorithm("a*")
+                    }
+                  >
+                    A*
+                  </div>
                 </NavLink>
               </li>
               <li class="tab">
                 <NavLink to="/">
-                  <div onClick={() => this.setAlgorithm("bfs")}>
+                  <div
+                    onClick={
+                      this.props.isRunning
+                        ? null
+                        : () => this.setAlgorithm("bfs")
+                    }
+                  >
                     Breath-First Search
                   </div>
                 </NavLink>
               </li>
               <li class="tab">
                 <NavLink to="/">
-                  <div onClick={() => this.setAlgorithm("dfs")}>
+                  <div
+                    onClick={
+                      this.props.isRunning
+                        ? null
+                        : () => this.setAlgorithm("dfs")
+                    }
+                  >
                     Depth-First Search
                   </div>
                 </NavLink>
@@ -121,12 +159,18 @@ function msp(state) {
   return {
     grid: state.grid,
     algorithm: state.algorithm,
+    isRunning: state.isRunning,
+    onInfo: state.onInfo,
   }
 }
 function mdp(dispatch) {
   return {
     dispatchGrid: (gridArray) => dispatch(setGrid(gridArray)),
     dispatchSetAlgorithm: (algo) => dispatch(setAlgorithm(algo)),
+    dispatchSetIsRunning: () => dispatch(setIsRunning()),
+    dispatchSetFinishedRunning: () => dispatch(setFinishedRunning()),
+    dispatchSetOnInfo: () => dispatch(setOnInfo()),
+    dispatchSetOffInfo: () => dispatch(setOffInfo()),
   }
 }
 

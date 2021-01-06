@@ -56,9 +56,11 @@ function getShortestPath(finishNode) {
   return shortestPath
 }
 
-function animateDijkstra(visitedNodes, shortestPath) {
+function animateDijkstra(visitedNodes, shortestPath, props) {
+  console.log("visited nodes length:", visitedNodes.length)
   for (let i = 0; i <= visitedNodes.length; i++) {
     if (i === visitedNodes.length) {
+      console.log("visited nodes length:", visitedNodes.length)
       setTimeout(() => {
         animateShortestPath(shortestPath)
       }, 10 * i)
@@ -70,6 +72,7 @@ function animateDijkstra(visitedNodes, shortestPath) {
         "node visited"
     }, 10 * i)
   }
+  props.dispatchSetFinishedRunning()
 }
 
 export function animateShortestPath(shortestPath) {
@@ -96,12 +99,13 @@ function nodeHelper(grid, node) {
   return temp
 }
 
-export function visualizeDijkstra(grid) {
-
+export function visualizeDijkstra(props) {
+  let grid = props.grid
   let startNode = nodeHelper(grid, "start")
   let finishNode = nodeHelper(grid, "finish")
 
   const visitedNodes = Dijkstra(grid, startNode, finishNode)
   const shortestPath = getShortestPath(finishNode)
-  animateDijkstra(visitedNodes, shortestPath)
+  animateDijkstra(visitedNodes, shortestPath, props)
+  // props.dispatchSetFinishedRunning()
 }
