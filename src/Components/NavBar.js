@@ -48,9 +48,9 @@ class NavBar extends React.Component {
             <a href="#" class="brand-logo">
               Pathfinding Algorithm Visualizer
             </a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger">
+            {/* <a href="#" data-target="mobile-demo" class="sidenav-trigger">
               <i class="material-icons">menu</i>
-            </a>
+            </a> */}
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <li>
                 <div onClick={this.handleVisualize}>Visualize Algorithm</div>
