@@ -31,7 +31,6 @@ const getInitialGrid = (bodyState) => {
 }
 
 const createNode = (col, row, bodyState) => {
-  console.log(bodyState.finishRow, bodyState.finishCol)
   return {
     col,
     row,
@@ -43,7 +42,6 @@ const createNode = (col, row, bodyState) => {
     previousNode: null,
   }
 }
-
 
 //maybe need to update this function so that it works for all adjustments
 //and not just with the walls. make it dynamic with conditionals

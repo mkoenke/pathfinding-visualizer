@@ -17,7 +17,6 @@ export const DepthFirstSearch = (grid, startNode, finishNode) => {
       unvisited.push(neighbor)
     }
   }
-  console.log("Visited Nodes", visitedNodes)
   return visitedNodes
 }
 
@@ -32,16 +31,6 @@ const getNextNeighbors = (node, grid) => {
   return neighbors.filter((neighbor) => !neighbor.isWall)
 }
 
-//   function getNextNeighbors(node, grid) {
-//     const neighbors = []
-//     const { col, row } = node
-//     if (row > 0) neighbors.push(grid[row - 1][col])
-//     if (row < grid.length - 1) neighbors.push(grid[row + 1][col])
-//     if (col > 0) neighbors.push(grid[row][col - 1])
-//     if (col < grid[0].length - 1) neighbors.push(grid[row][col + 1])
-//     return neighbors.filter((neighbor) => !neighbor.isVisited)
-//   }
-
 function getShortestPath(finishNode) {
   const shortestPath = []
   let currentNode = finishNode
@@ -49,7 +38,6 @@ function getShortestPath(finishNode) {
     shortestPath.unshift(currentNode)
     currentNode = currentNode.previousNode
   }
-  console.log("Shortest Path:", shortestPath)
   return shortestPath
 }
 
@@ -96,8 +84,6 @@ function nodeHelper(grid, node) {
 export function visualizeDepthFirstSearch(grid) {
   let startNode = nodeHelper(grid, "start")
   let finishNode = nodeHelper(grid, "finish")
-  console.log("StartNode:", startNode)
-  console.log("FinishNode:", finishNode)
 
   const visitedNodes = DepthFirstSearch(grid, startNode, finishNode)
   const shortestPath = getShortestPath(finishNode)

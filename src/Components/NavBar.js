@@ -20,21 +20,17 @@ class NavBar extends React.Component {
 
   handleVisualize = () => {
     let currentAlgorithm = this.props.algorithm
-    console.log(currentAlgorithm)
     let grid = this.props.grid
     switch (currentAlgorithm) {
       case "dijkstra":
-        console.log("dijkstra")
         visualizeDijkstra(grid)
       // case "a*":
       //   visualizeA(grid)
       // case "bfs":
       //   visualizeBFS(grid)
       case "dfs":
-        console.log("dfs")
         visualizeDepthFirstSearch(grid)
       default:
-        console.log("default")
         visualizeDijkstra(grid)
     }
   }
