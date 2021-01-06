@@ -2,6 +2,7 @@ import "materialize-css"
 import React from "react"
 // import { createPortal } from "react-dom"
 import { connect } from "react-redux"
+import { NavLink } from "react-router-dom"
 import { visualizeAStar } from "../Algorithms/AStar"
 import { visualizeDepthFirstSearch } from "../Algorithms/DepthFirstSearch"
 import { visualizeDijkstra } from "../Algorithms/Dijkstra"
@@ -53,32 +54,60 @@ class NavBar extends React.Component {
             </a> */}
             <ul id="nav-mobile" class="right hide-on-med-and-down">
               <li>
-                <div onClick={this.handleVisualize}>Visualize Algorithm</div>
+                <NavLink to="/">
+                  <div
+                    onClick={this.handleVisualize}
+                    // style={
+                    //   this.props.onInfo
+                    //     ? { display: "none" }
+                    //     : { display: "block" }
+                    // }
+                  >
+                    Visualize Algorithm
+                  </div>
+                </NavLink>
               </li>
               <li>
-                <div onClick={this.handleNewGrid}>New Grid</div>
+                <NavLink to="/">
+                  <div onClick={this.handleNewGrid}>New Grid</div>
+                </NavLink>
               </li>
             </ul>
           </div>
           <div class="nav-content">
             <ul class="tabs tabs-transparent">
               <li class="tab">
-                <div onClick={() => this.setAlgorithm("dijkstra")}>
-                  Dijkstra'S Algorithm
-                </div>
+                <NavLink to="/">
+                  <div onClick={() => this.setAlgorithm("dijkstra")}>
+                    Dijkstra'S Algorithm
+                  </div>
+                </NavLink>
               </li>
               <li class="tab">
-                <div onClick={() => this.setAlgorithm("a*")}>A*</div>
+                <NavLink to="/">
+                  <div onClick={() => this.setAlgorithm("a*")}>A*</div>
+                </NavLink>
               </li>
               <li class="tab">
-                <div onClick={() => this.setAlgorithm("bfs")}>
-                  Breath-First Search
-                </div>
+                <NavLink to="/">
+                  <div onClick={() => this.setAlgorithm("bfs")}>
+                    Breath-First Search
+                  </div>
+                </NavLink>
               </li>
               <li class="tab">
-                <div onClick={() => this.setAlgorithm("dfs")}>
-                  Depth-First Search
-                </div>
+                <NavLink to="/">
+                  <div onClick={() => this.setAlgorithm("dfs")}>
+                    Depth-First Search
+                  </div>
+                </NavLink>
+              </li>
+              <li class="right hide-on-med-and-down tab">
+                <NavLink to="/info">
+                  <div onClick={this.props.onInfo ? null : this.handleOnInfo}>
+                    Algorithm Info
+                  </div>
+                </NavLink>
               </li>
             </ul>
           </div>

@@ -12,7 +12,7 @@ class Body extends React.Component {
     startRow: 1,
     startCol: 1,
     finishRow: 8,
-    finishCol: 28
+    finishCol: 28,
   }
   componentDidMount() {
     const grid = getInitialGrid(this.state)
@@ -52,7 +52,6 @@ class Body extends React.Component {
       this.props.dispatchGrid(newGrid)
     }
   }
-
 
   handleMouseUp = () => {
     this.setState({ mousePressed: false })
