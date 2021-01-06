@@ -2,6 +2,7 @@ import "materialize-css"
 import React from "react"
 // import { createPortal } from "react-dom"
 import { connect } from "react-redux"
+import { visualizeAStar } from "../Algorithms/AStar"
 import { visualizeDepthFirstSearch } from "../Algorithms/DepthFirstSearch"
 import { visualizeDijkstra } from "../Algorithms/Dijkstra"
 import { resetGrid } from "../HelperFunctions/initialGrid"
@@ -24,8 +25,9 @@ class NavBar extends React.Component {
     switch (currentAlgorithm) {
       case "dijkstra":
         visualizeDijkstra(grid)
-      // case "a*":
-      //   visualizeA(grid)
+      case "a*":
+        console.log("A Star")
+        visualizeAStar(grid)
       // case "bfs":
       //   visualizeBFS(grid)
       case "dfs":
