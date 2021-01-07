@@ -41,11 +41,11 @@ function getShortestPath(finishNode) {
   return shortestPath
 }
 
-function animateDepthFirstSearch(visitedNodes, shortestPath) {
+function animateDepthFirstSearch(visitedNodes, shortestPath, props) {
   for (let i = 0; i <= visitedNodes.length; i++) {
     if (i === visitedNodes.length) {
       setTimeout(() => {
-        animateShortestPath(shortestPath)
+        animateShortestPath(shortestPath, props)
       }, 10 * i)
       return
     }
@@ -57,7 +57,7 @@ function animateDepthFirstSearch(visitedNodes, shortestPath) {
   }
 }
 
-export function animateShortestPath(shortestPath) {
+export function animateShortestPath(shortestPath, props) {
   for (let i = 0; i < shortestPath.length; i++) {
     setTimeout(() => {
       const node = shortestPath[i]
@@ -65,7 +65,7 @@ export function animateShortestPath(shortestPath) {
         "node shortest-path"
     }, 50 * i)
   }
-  then(props.dispatchSetFinishedRunning())
+  props.dispatchSetFinishedRunning()
 }
 
 function nodeHelper(grid, node) {
@@ -89,6 +89,5 @@ export function visualizeDepthFirstSearch(props) {
 
   const visitedNodes = DepthFirstSearch(grid, startNode, finishNode)
   const shortestPath = getShortestPath(finishNode)
-  animateDepthFirstSearch(visitedNodes, shortestPath)
-  props.dispatchSetFinishedRunning()
+  animateDepthFirstSearch(visitedNodes, shortestPath, props)
 }
