@@ -18,16 +18,17 @@ import {
 
 class NavBar extends React.Component {
   state = {
-    startRow: 1,
-    startCol: 1,
-    finishRow: 8,
-    finishCol: 28
+    startRow: 4,
+    startCol: 5,
+    finishRow: 17,
+    finishCol: 36,
   }
 
   handleNewGrid = () => {
     // resetGrid()
-    clearGridClasses(this.props.grid)
     const grid = getInitialGrid(this.state)
+    clearGridClasses(this.props.grid)
+    console.log(grid)
     this.props.dispatchGrid(grid)
   }
 
@@ -66,7 +67,7 @@ class NavBar extends React.Component {
       <>
         <nav
           class="nav-extended"
-          style={{ backgroundColor: "rgb(52, 157, 238)" }}
+          style={{ backgroundColor: "#70566dff" }}
         >
           <div class="nav-wrapper">
             <a href="#" class="brand-logo right">

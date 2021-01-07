@@ -1,21 +1,31 @@
+:root {
+  --firstColor:  #bfdbf7ff;
+  --secondColor: #b7d5d4ff;
+  --finalColor: #488286ff;
+  --pathColor: #42273bff;
+  --navBarGrid: #70566dff;
+}
+
 .node {
   width: 30px;
   height: 30px;
-  outline: 1px solid rgb(52, 157, 238);
+  outline: 1px solid var(--navBarGrid);
   display: inline-block;
 }
 
 .finish {
-  background-color: red;
+  /* background-color: red; */
+  background-image: url("../../images/finish.png");
 }
 
 .start {
-  background-color: green;
+  /* background-color: green; */
+  background-image: url("../../images/start.png");
 }
 
 .visited {
   animation-name: visitedAnimation;
-  animation-duration: 1.5s;
+  animation-duration: .8s;
   animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
@@ -24,31 +34,96 @@
   animation-play-state: running;
 }
 
+/* @keyframes visitedAnimation {
+  0% {
+    transform: skew(20deg);
+    background-color: rgba(0, 0, 66, 0.75);
+  }
+
+  50% {
+    transform: skew(90deg) scale(0.25);
+    background-color: rgba(118, 175, 248, 0.75);
+
+  }
+
+  75% {
+    transform: skew(160deg);
+    background-color: rgba(15, 76, 241, 0.75);
+  }
+
+  100% {
+    transform: skew(180deg);
+    background-color: rgba(15, 76, 241, 0.75);
+  }
+} */
+
 @keyframes visitedAnimation {
   0% {
     transform: scale(0.3);
-    background-color: rgba(0, 0, 66, 0.75);
+    background-color: var(--firstColor);
     border-radius: 100%;
   }
 
   50% {
-    background-color: rgba(118, 175, 248, 0.75);
+    background-color: var(--secondColor);
   }
 
   75% {
     transform: scale(1.2);
-    background-color: rgba(78, 139, 245, 0.75);
+    background-color: var(--finalColor);
   }
 
   100% {
     transform: scale(1);
-    background-color: rgba(15, 76, 241, 0.75);
+    background-color: var(--finalColor);
   }
 }
+/* 
+
+$steel-teal: #488286ff;
+$opal: #b7d5d4ff;
+$beau-blue: #bfdbf7ff;
+$old-lavender: #70566dff;
+$dark-purple: #42273bff;
+
+$granny-smith-apple: #9ee493ff;
+$nyanza: #daf7dcff;
+$opal: #abc8c0ff;
+$old-lavender: #70566dff;
+$dark-purple: #42273bff; */
+
+
+
+/* @keyframes visitedAnimation {
+  0% {
+    transform: scale(0.3) rotate3d(1, 1, 0, 45deg);
+    background-color: var(--firstColor);
+    outline-color: var(--firstColor);
+    border-radius: 100%;
+  }
+
+  50% {
+    background-color: var(--secondColor) rotate3d(1, 0, 1, 45deg);
+    outline-color: var(--secondColor);
+  }
+
+  75% {
+    transform: scale(1.2) rotate3d(0, 1, 1, 45deg);
+    background-color: var(--finalColor);
+    outline-color: var(--finalColor) ;
+  }
+
+  100% {
+    transform: scale(1) rotate3d(1, 1, 1, 360deg);
+    background-color: var(--finalColor);
+  }
+} */
 
 
 .wall {
-  background-color: rgb(12, 53, 71);
+  background-image: url("../../images/wall.png");
+  
+  /* background-color: rgb(12, 53, 71); */
 
   /* animation-name: wallFlip;
   animation-duration: 0.25s;
@@ -60,7 +135,7 @@
   animation-play-state: running; */
 }
 
-@keyframes wallFlip {
+/* @keyframes wallFlip {
   0% {
     transform: scale(0.6);
     background-color: rgb(12, 53, 71);
@@ -75,7 +150,7 @@
     transform: scale(1);
     background-color: rgb(12, 53, 71);
   }
-}
+} */
 
 .shortest-path {
   animation-name: shortestPath;
@@ -90,6 +165,28 @@
 
 @keyframes shortestPath {
   0% {
+    transform: skewY(20deg);
+    background-color: var(--finalColor);
+  }
+
+  50% {
+    transform: skewY(90deg) scale(0.25);
+  }
+
+  75% {
+    transform: skewY(160deg);
+    background-color: var(--pathColor);
+  }
+
+  100% {
+    transform: skewY(180deg) scale(0.9);
+    
+    background-color: var(--pathColor);
+  }
+}
+
+/* @keyframes shortestPath {
+  0% {
     transform: scale(0.6);
     background-color: rgb(111, 255, 106);
   }
@@ -103,5 +200,5 @@
     transform: scale(1);
     background-color: rgb(3, 145, 10);
   }
-}
+} */
 

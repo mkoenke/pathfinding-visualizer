@@ -9,10 +9,10 @@ class Body extends React.Component {
     mousePressed: false,
     startNode: false,
     finishNode: false,
-    startRow: 1,
-    startCol: 1,
-    finishRow: 8,
-    finishCol: 28,
+    startRow: 4,
+    startCol: 5,
+    finishRow: 17,
+    finishCol: 36,
   }
   componentDidMount() {
     const grid = getInitialGrid(this.state)
