@@ -76,7 +76,7 @@ class NavBar extends React.Component {
             <ul id="nav-mobile" class="hide-on-med-and-down">
               <li>
                 <NavLink to="/">
-                  <div onClick={this.handleNewGrid}
+                  <div onClick={this.props.isRunning ? null : this.handleNewGrid}
                     style={
                       this.props.onInfo
                         ? { display: "none" }
