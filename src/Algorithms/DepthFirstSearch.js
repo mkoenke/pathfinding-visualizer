@@ -11,7 +11,6 @@ export const DepthFirstSearch = (grid, startNode, finishNode) => {
     currentNode.isVisited = true
     visitedNodes.push(currentNode)
     let neighbors = getNextNeighbors(currentNode, grid)
-
     for (const neighbor of neighbors) {
       neighbor.previousNode = currentNode
       unvisited.push(neighbor)

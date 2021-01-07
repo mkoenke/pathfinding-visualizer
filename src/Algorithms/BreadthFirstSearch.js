@@ -1,17 +1,25 @@
-function BreadthFirstSearch(grid, startNode, endNode){
+function BreadthFirstSearch(grid, startNode, finishNode) {
   const unvisited = []
   const visitedNodes = []
   startNode.visited = true
   startNode.previousNode = null
   unvisited.push(startNode)
   visitedNodes.push(startNode)
-
   while (unvisited.length !== 0) {
-    
+    let currentNode = unvisited.shift()
+    if (currentNode === finishNode) {
+      return visitedNodes
+    }
+    let neighbors = getNextNeighbors(currentNode, grid)
+    for (const neighbor of neighbors) {
+      neighbor.isVisited = true
+      neighbor.previousNode = currentNode
+      unvisited.push(neighbor)
+      visitedNodes.push(neighbor)
+    }
+
+    return visitedNodes
   }
-
-
-  return visitedNodes
 }
 
 const getNextNeighbors = (node, grid) => {
