@@ -53,7 +53,15 @@ class InfoPageContainer extends React.Component {
     })
   }
   render() {
-    return <div className="row">{this.arrayOfCards()}</div>
+    return (
+      <div className="container" >
+        <div className="row" style={{marginTop: "10%"}}>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            {this.arrayOfCards()}
+          </div>
+        </div>
+      </div>
+    )
   }
 }
 

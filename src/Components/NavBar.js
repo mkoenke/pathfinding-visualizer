@@ -74,9 +74,9 @@ class NavBar extends React.Component {
             </a>
 
             <ul id="nav-mobile" class="hide-on-med-and-down">
-              <li>
+              <li onClick={this.props.isRunning ? null : this.handleNewGrid}>
                 <NavLink to="/">
-                  <div onClick={this.props.isRunning ? null : this.handleNewGrid}
+                  <div
                     style={
                       this.props.onInfo
                         ? { display: "none" }
@@ -86,10 +86,9 @@ class NavBar extends React.Component {
                     New Grid</div>
                 </NavLink>
               </li>
-              <li>
+              <li onClick={this.props.isRunning ? null : this.handleVisualize}>
                 <NavLink to="/">
                   <div
-                    onClick={this.props.isRunning ? null : this.handleVisualize}
                     style={
                       this.props.onInfo
                         ? { display: "none" }
@@ -104,68 +103,66 @@ class NavBar extends React.Component {
           </div>
           <div class="nav-content">
             <ul class="tabs tabs-transparent">
-              <li class="tab">
+              <li class="tab" onClick={
+                this.props.isRunning
+                  ? null
+                  : () => this.setAlgorithm("dijkstra")
+              }>
                 <NavLink to="/">
                   <div
-                    onClick={
-                      this.props.isRunning
-                        ? null
-                        : () => this.setAlgorithm("dijkstra")
-                    }
+
                   >
                     Dijkstra'S Algorithm
                   </div>
                 </NavLink>
               </li>
-              <li class="tab">
+              <li onClick={
+                this.props.isRunning
+                  ? null
+                  : () => this.setAlgorithm("a*")
+              } class="tab">
                 <NavLink to="/">
                   <div
-                    onClick={
-                      this.props.isRunning
-                        ? null
-                        : () => this.setAlgorithm("a*")
-                    }
+
                   >
                     A*
                   </div>
                 </NavLink>
               </li>
-              <li class="tab">
+              <li class="tab" onClick={
+                this.props.isRunning
+                  ? null
+                  : () => this.setAlgorithm("bfs")
+              }>
                 <NavLink to="/">
-                  <div
-                    onClick={
-                      this.props.isRunning
-                        ? null
-                        : () => this.setAlgorithm("bfs")
-                    }
-                  >
+                  <div>
                     Breath-First Search
                   </div>
                 </NavLink>
               </li>
-              <li class="tab">
+              <li class="tab" onClick={
+                this.props.isRunning
+                  ? null
+                  : () => this.setAlgorithm("dfs")
+              }>
                 <NavLink to="/">
                   <div
-                    onClick={
-                      this.props.isRunning
-                        ? null
-                        : () => this.setAlgorithm("dfs")
-                    }
+
                   >
                     Depth-First Search
                   </div>
                 </NavLink>
               </li>
-              <li class="hide-on-med-and-down tab">
+              <li class="hide-on-med-and-down tab" onClick={this.props.onInfo ? null : this.handleOnInfo}>
                 <NavLink to="/info">
-                  <div onClick={this.props.onInfo ? null : this.handleOnInfo}>
+                  <div >
                     Algorithm Info
                   </div>
                 </NavLink>
               </li>
-              <li class="right hide-on-med-and-down tab">
+              <li class="right hide-on-med-and-down tab" onClick={this.props.onInfo ? null : this.handleOnInfo}>
                 <NavLink to="/info">
-                  <div onClick={this.props.onInfo ? null : this.handleOnInfo}>
+                  <div >
                     Sorting Algorithm Visualizer
                   </div>
                 </NavLink>

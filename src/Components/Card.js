@@ -4,7 +4,7 @@ class Card extends React.Component {
   render() {
     return (
       <>
-        <div className="col s4">
+        <div className="col s5">
           <div class="card hoverable medium">
             <div class="card-image waves-effect waves-block waves-light">
               <img class="activator" src={this.props.cardObj.coverImage} />
