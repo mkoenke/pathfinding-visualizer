@@ -40,12 +40,21 @@ class InfoPageContainer extends React.Component {
   }
   arrayOfCards = () => {
     console.log(this.cardObjects)
-    return this.cardObjects().map((card) => {console.log(card.coverImage)
+    return this.cardObjects().map((card) => {
+      console.log(card.coverImage)
       return <Card key={card.id} cardObj={card} />
     })
   }
   render() {
-    return <div className="row">{this.arrayOfCards()}</div>
+    return (
+      <div className="container" >
+        <div className="row" style={{marginTop: "10%"}}>
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            {this.arrayOfCards()}
+          </div>
+        </div>
+      </div>
+    )
   }
 }
 
