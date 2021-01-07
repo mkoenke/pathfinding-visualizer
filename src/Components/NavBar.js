@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom"
 import { visualizeAStar } from "../Algorithms/AStar"
 import { visualizeDepthFirstSearch } from "../Algorithms/DepthFirstSearch"
 import { visualizeDijkstra } from "../Algorithms/Dijkstra"
-import { resetGrid } from "../HelperFunctions/initialGrid"
+import { getInitialGrid, resetGrid } from "../HelperFunctions/initialGrid"
 import {
   setAlgorithm,
   setFinishedRunning,
@@ -17,10 +17,17 @@ import {
 } from "../Redux/actions"
 
 class NavBar extends React.Component {
+  state = {
+    startRow: 1,
+    startCol: 1,
+    finishRow: 8,
+    finishCol: 28
+  }
+
   handleNewGrid = () => {
-    resetGrid()
-    // const grid = getInitialGrid()
-    // this.props.dispatchGrid(grid)
+    // resetGrid()
+    const grid = getInitialGrid(this.state)
+    this.props.dispatchGrid(grid)
   }
 
   setAlgorithm = (algo) => {
@@ -141,12 +148,20 @@ class NavBar extends React.Component {
                   </div>
                 </NavLink>
               </li>
-              <li class="right hide-on-med-and-down tab">
+              <li class="hide-on-med-and-down tab">
                 <NavLink to="/info">
                   <div onClick={this.props.onInfo ? null : this.handleOnInfo}>
                     Algorithm Info
                   </div>
                 </NavLink>
+              </li>
+              <li class="right hide-on-med-and-down tab">
+                <NavLink to="/info">
+                  <div onClick={this.props.onInfo ? null : this.handleOnInfo}>
+                    Sorting Algorithm Visualizer
+                  </div>
+                </NavLink>
+
               </li>
             </ul>
           </div>

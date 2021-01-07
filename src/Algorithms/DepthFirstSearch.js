@@ -57,7 +57,7 @@ function animateDepthFirstSearch(visitedNodes, shortestPath, props) {
   }
 }
 
-export function animateShortestPath(shortestPath, props) {
+function animateShortestPath(shortestPath, props) {
   for (let i = 0; i < shortestPath.length; i++) {
     setTimeout(() => {
       const node = shortestPath[i]

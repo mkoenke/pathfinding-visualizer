@@ -1,51 +1,28 @@
-function Dijkstra(grid, startNode, finishNode) {
+function BreadthFirstSearch(grid, startNode, endNode){
+  const unvisited = []
   const visitedNodes = []
-  startNode.distance = 0
-  const unvisitedNodes = getAllNodes(grid)
-  
-  while (!!unvisitedNodes.length) {
-    sortByDistance(unvisitedNodes)
-    const nextNode = unvisitedNodes.shift()
-    if (nextNode.isWall) continue
-    if (nextNode.distance === Infinity) return visitedNodes
-    nextNode.isVisited = true
-    visitedNodes.push(nextNode)
-    if (nextNode === finishNode) return visitedNodes
-    updateNextNeighbors(nextNode, grid)
+  startNode.visited = true
+  startNode.previousNode = null
+  unvisited.push(startNode)
+  visitedNodes.push(startNode)
+
+  while (unvisited.length !== 0) {
+    
   }
+
+
+  return visitedNodes
 }
 
-function sortByDistance(unvisitedNodes) {
-  unvisitedNodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance)
-  console.log('unvisited nodes: ', unvisitedNodes)
-}
-
-function updateNextNeighbors(node, grid) {
-  const nextNeighbors = getNextNeighbors(node, grid)
-  for (const neighbor of nextNeighbors) {
-    neighbor.distance = node.distance + 1
-    neighbor.previousNode = node
-  }
-}
-
-function getNextNeighbors(node, grid) {
-  const neighbors = []
+const getNextNeighbors = (node, grid) => {
+  let neighbors = []
   const { col, row } = node
   if (row > 0) neighbors.push(grid[row - 1][col])
   if (row < grid.length - 1) neighbors.push(grid[row + 1][col])
   if (col > 0) neighbors.push(grid[row][col - 1])
   if (col < grid[0].length - 1) neighbors.push(grid[row][col + 1])
-  return neighbors.filter((neighbor) => !neighbor.isVisited)
-}
-
-function getAllNodes(grid) {
-  const allNodes = []
-  for (const row of grid) {
-    for (const node of row) {
-      allNodes.push(node)
-    }
-  }
-  return allNodes
+  neighbors = neighbors.filter((neighbor) => !neighbor.isVisited)
+  return neighbors.filter((neighbor) => !neighbor.isWall)
 }
 
 function getShortestPath(finishNode) {
@@ -58,11 +35,9 @@ function getShortestPath(finishNode) {
   return shortestPath
 }
 
-function animateDijkstra(visitedNodes, shortestPath, props) {
-  console.log("visited nodes length:", visitedNodes.length)
+function animateBreadthFirstSearch(visitedNodes, shortestPath, props) {
   for (let i = 0; i <= visitedNodes.length; i++) {
     if (i === visitedNodes.length) {
-      console.log("visited nodes length:", visitedNodes.length)
       setTimeout(() => {
         animateShortestPath(shortestPath, props)
       }, 10 * i)
@@ -101,13 +76,12 @@ function nodeHelper(grid, node) {
   return temp
 }
 
-export function visualizeDijkstra(props) {
+export function visualizeBreadthFirstSearch(props) {
   let grid = props.grid
   let startNode = nodeHelper(grid, "start")
   let finishNode = nodeHelper(grid, "finish")
 
-  const visitedNodes = Dijkstra(grid, startNode, finishNode)
+  const visitedNodes = BreadthFirstSearch(grid, startNode, finishNode)
   const shortestPath = getShortestPath(finishNode)
-  animateDijkstra(visitedNodes, shortestPath, props)
-  // props.dispatchSetFinishedRunning()
+  animateBreadthFirstSearch(visitedNodes, shortestPath, props)
 }

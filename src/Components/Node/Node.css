@@ -46,14 +46,41 @@
   }
 }
 
+
 .wall {
   background-color: rgb(12, 53, 71);
+
+  /* animation-name: wallFlip;
+  animation-duration: 0.25s;
+  animation-timing-function:ease-in-out;
+  animation-delay: 0;
+  animation-direction: inherit;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running; */
+}
+
+@keyframes wallFlip {
+  0% {
+    transform: scale(0.6);
+    background-color: rgb(12, 53, 71);
+  }
+
+  50%{
+    transform: scale(1.1);
+    background-color: rgb(12, 53, 71);
+  }
+
+  100%{
+    transform: scale(1);
+    background-color: rgb(12, 53, 71);
+  }
 }
 
 .shortest-path {
   animation-name: shortestPath;
   animation-duration: 1.5s;
-  animation-timing-function: ease-out;
+  animation-timing-function: linear;
   animation-delay: 0;
   animation-direction: alternate;
   animation-iteration-count: 1;
@@ -77,3 +104,4 @@
     background-color: rgb(3, 145, 10);
   }
 }
+
