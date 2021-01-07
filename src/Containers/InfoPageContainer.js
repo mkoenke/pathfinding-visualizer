@@ -2,8 +2,9 @@ import React from "react"
 import Card from "../Components/Card"
 import aStar from "../images/aStar.gif"
 import aStarChart from "../images/astarchart.png"
-import bfs_png from "../images/bfs.png"
+// import bfs_png from "../images/bfs.png"
 import bfsChart from "../images/bfschart.png"
+import bfsgif from "../images/bfsgif.gif"
 import dfs_gif from "../images/dfs.gif"
 import dfsChart from "../images/dfschart.png"
 import dijkstraChart from "../images/dijkstrachart.png"
@@ -23,7 +24,7 @@ class InfoPageContainer extends React.Component {
       {
         id: 2,
         name: "Breadth First Search",
-        coverImage: bfs_png,
+        coverImage: bfsgif,
         description:
           "A BFS is a way of traversing a graph by visiting every node and edge in a well-defined order by marking each node as visited along the way. Specifically, a BFS starts at a defined node and visits all of its connected neighbors. These neighbors all possess one degree of separation from the start node. This is level one, or layer one. Once level one has been cleared all the nodes in level two are visited, and so-on and so-forth. It is important to note that the nodes in each level are visited in a very specific order, as we will see in just a moment, and their children nodes are visited in this same order. This process continues until every node in the graph has been visited, or the end node has been found.",
         chartImage: bfsChart,
@@ -54,8 +55,8 @@ class InfoPageContainer extends React.Component {
   }
   render() {
     return (
-      <div className="container" >
-        <div className="row" style={{marginTop: "10%"}}>
+      <div className="container">
+        <div className="row" style={{ marginTop: "10%" }}>
           <div style={{ display: "flex", justifyContent: "center" }}>
             {this.arrayOfCards()}
           </div>
