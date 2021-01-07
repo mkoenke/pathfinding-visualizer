@@ -6,14 +6,14 @@ import { NavLink } from "react-router-dom"
 import { visualizeAStar } from "../Algorithms/AStar"
 import { visualizeDepthFirstSearch } from "../Algorithms/DepthFirstSearch"
 import { visualizeDijkstra } from "../Algorithms/Dijkstra"
-import { clearGridClasses, getInitialGrid, resetGrid } from "../HelperFunctions/initialGrid"
+import { clearGridClasses, getInitialGrid } from "../HelperFunctions/initialGrid"
 import {
   setAlgorithm,
   setFinishedRunning,
   setGrid,
   setIsRunning,
   setOffInfo,
-  setOnInfo,
+  setOnInfo
 } from "../Redux/actions"
 
 class NavBar extends React.Component {
@@ -162,11 +162,11 @@ class NavBar extends React.Component {
                 </NavLink>
               </li>
               <li class="right hide-on-med-and-down tab" onClick={this.props.onInfo ? null : this.handleOnInfo}>
-                <NavLink to="/info">
+                <a href="https://dyson1602.github.io/sorting-visualizer/">
                   <div >
                     Sorting Algorithm Visualizer
                   </div>
-                </NavLink>
+                </a>
 
               </li>
             </ul>
