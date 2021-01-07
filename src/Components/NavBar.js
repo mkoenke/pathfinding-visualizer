@@ -69,11 +69,23 @@ class NavBar extends React.Component {
           style={{ backgroundColor: "rgb(52, 157, 238)" }}
         >
           <div class="nav-wrapper">
-            <a href="#" class="brand-logo">
+            <a href="#" class="brand-logo right">
               Pathfinding Algorithm Visualizer
             </a>
 
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <ul id="nav-mobile" class="hide-on-med-and-down">
+              <li>
+                <NavLink to="/">
+                  <div onClick={this.handleNewGrid}
+                    style={
+                      this.props.onInfo
+                        ? { display: "none" }
+                        : { display: "block" }
+                    }
+                  >
+                    New Grid</div>
+                </NavLink>
+              </li>
               <li>
                 <NavLink to="/">
                   <div
@@ -86,11 +98,6 @@ class NavBar extends React.Component {
                   >
                     Visualize Algorithm
                   </div>
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/">
-                  <div onClick={this.handleNewGrid}>New Grid</div>
                 </NavLink>
               </li>
             </ul>
