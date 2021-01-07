@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { getInitialGrid, gridWithWall } from "../HelperFunctions/initialGrid"
+import { getInitialGrid, gridWithWall, updateMainNodes } from "../HelperFunctions/initialGrid"
 import { setGrid } from "../Redux/actions"
 import Node from "./Node/Node"
 
@@ -39,6 +39,7 @@ class Body extends React.Component {
 
     if (this.state.startNode) {
       this.setState({ startRow: row, startCol: col }, () => {
+        // let grid = updateMainNodes(this.props.grid, row, col)
         const grid = getInitialGrid(this.state)
         this.props.dispatchGrid(grid)
       })

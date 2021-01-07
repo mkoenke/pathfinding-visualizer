@@ -2,7 +2,7 @@ function Dijkstra(grid, startNode, finishNode) {
   const visitedNodes = []
   startNode.distance = 0
   const unvisitedNodes = getAllNodes(grid)
-  
+
   while (!!unvisitedNodes.length) {
     sortByDistance(unvisitedNodes)
     const nextNode = unvisitedNodes.shift()
@@ -17,7 +17,7 @@ function Dijkstra(grid, startNode, finishNode) {
 
 function sortByDistance(unvisitedNodes) {
   unvisitedNodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance)
-  console.log('unvisited nodes: ', unvisitedNodes)
+  // console.log('unvisited nodes: ', unvisitedNodes)
 }
 
 function updateNextNeighbors(node, grid) {

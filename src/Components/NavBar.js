@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom"
 import { visualizeAStar } from "../Algorithms/AStar"
 import { visualizeDepthFirstSearch } from "../Algorithms/DepthFirstSearch"
 import { visualizeDijkstra } from "../Algorithms/Dijkstra"
-import { getInitialGrid, resetGrid } from "../HelperFunctions/initialGrid"
+import { clearGridClasses, getInitialGrid, resetGrid } from "../HelperFunctions/initialGrid"
 import {
   setAlgorithm,
   setFinishedRunning,
@@ -26,6 +26,7 @@ class NavBar extends React.Component {
 
   handleNewGrid = () => {
     // resetGrid()
+    clearGridClasses(this.props.grid)
     const grid = getInitialGrid(this.state)
     this.props.dispatchGrid(grid)
   }

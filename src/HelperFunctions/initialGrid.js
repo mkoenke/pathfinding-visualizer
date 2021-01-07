@@ -1,8 +1,3 @@
-export const startRow = 2
-export const startCol = 2
-export const finishRow = 9
-export const finishCol = 28
-
 const resetGrid = () => {
   console.log("reset grid")
   // let nodes = document.getElementsByClassName("node")
@@ -56,4 +51,32 @@ const gridWithWall = (grid, row, col) => {
   return newGrid
 }
 
-export { getInitialGrid, gridWithWall, resetGrid }
+const updateMainNodes = (grid, row, col) => {
+  for (let i of grid) {
+    for (let j of i) {
+      if (j.isStart === true) {
+        return j.isStart = false
+      }
+    }
+  }
+  grid[row][col].isStart = true
+  return grid
+}
+
+const clearGridClasses = (grid) => {
+  for (let row of grid) {
+    for (let col of row) {
+      console.log(col.isStart)
+      if (col.isStart){
+        document.getElementById(`node-${col.row}-${col.col}`).className = "node start"
+      } else if (col.isFinish){
+        document.getElementById(`node-${col.row}-${col.col}`).className = "node finish"
+      } else {
+        document.getElementById(`node-${col.row}-${col.col}`).className = "node"
+      }
+    }
+  }
+}
+
+
+export { getInitialGrid, gridWithWall, resetGrid, updateMainNodes, clearGridClasses }
