@@ -19,7 +19,7 @@ const resetGrid = () => {
 
 const getInitialGrid = (bodyState) => {
   const grid = []
-  for (let row = 0; row < 30; row++) {
+  for (let row = 0; row < 20; row++) {
     const currentRow = []
     for (let col = 0; col < 30; col++) {
       currentRow.push(createNode(col, row, bodyState))

@@ -40,6 +40,7 @@ class NavBar extends React.Component {
     let grid = this.props.grid
     switch (currentAlgorithm) {
       case "dijkstra":
+        console.log('running dijkstra')
         return visualizeDijkstra(this.props)
       case "a*":
         return visualizeAStar(this.props)

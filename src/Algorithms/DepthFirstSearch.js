@@ -65,6 +65,7 @@ export function animateShortestPath(shortestPath) {
         "node shortest-path"
     }, 50 * i)
   }
+  then(props.dispatchSetFinishedRunning())
 }
 
 function nodeHelper(grid, node) {

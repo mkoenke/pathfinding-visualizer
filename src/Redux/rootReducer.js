@@ -47,9 +47,9 @@ function changeOnInfoReducer(prevState = defaultState.onInfo, action) {
 function isRunningReducer(prevState = defaultState.isRunning, action) {
   switch (action.type) {
     case SET_IS_RUNNING:
-      console.log(action, action.payload)
       return action.payload
     case SET_FINISHED_RUNNING:
+      console.log(action, action.payload)
       return action.payload
     default:
       return prevState

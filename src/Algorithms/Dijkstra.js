@@ -62,7 +62,7 @@ function animateDijkstra(visitedNodes, shortestPath, props) {
     if (i === visitedNodes.length) {
       console.log("visited nodes length:", visitedNodes.length)
       setTimeout(() => {
-        animateShortestPath(shortestPath)
+        animateShortestPath(shortestPath, props)
       }, 10 * i)
       return
     }
@@ -72,10 +72,9 @@ function animateDijkstra(visitedNodes, shortestPath, props) {
         "node visited"
     }, 10 * i)
   }
-  props.dispatchSetFinishedRunning()
 }
 
-export function animateShortestPath(shortestPath) {
+function animateShortestPath(shortestPath, props) {
   for (let i = 0; i < shortestPath.length; i++) {
     setTimeout(() => {
       const node = shortestPath[i]
@@ -83,6 +82,7 @@ export function animateShortestPath(shortestPath) {
         "node shortest-path"
     }, 50 * i)
   }
+  props.dispatchSetFinishedRunning()
 }
 
 function nodeHelper(grid, node) {

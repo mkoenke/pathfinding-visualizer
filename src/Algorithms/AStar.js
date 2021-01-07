@@ -85,7 +85,7 @@ function animateAStar(visitedNodes, shortestPath) {
   }
 }
 
-export function animateShortestPath(shortestPath) {
+function animateShortestPath(shortestPath) {
   for (let i = 0; i < shortestPath.length; i++) {
     setTimeout(() => {
       const node = shortestPath[i]
@@ -93,6 +93,7 @@ export function animateShortestPath(shortestPath) {
         "node shortest-path"
     }, 50 * i)
   }
+  then(props.dispatchSetFinishedRunning())
 }
 
 function nodeHelper(grid, node) {
@@ -120,5 +121,4 @@ export function visualizeAStar(props) {
   const visitedNodes = AStar(grid, startNode, finishNode)
   const shortestPath = getShortestPath(finishNode)
   animateAStar(visitedNodes, shortestPath)
-  props.dispatchSetFinishedRunning()
 }
