@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { getInitialGrid, gridWithWall, updateMainNodes } from "../HelperFunctions/initialGrid"
+import { getInitialGrid, gridWithWall } from "../HelperFunctions/initialGrid"
 import { setGrid } from "../Redux/actions"
 import Node from "./Node/Node"
 

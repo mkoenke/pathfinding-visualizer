@@ -1,5 +1,5 @@
 :root {
-  --firstColor:  #bfdbf7ff;
+  --firstColor: #bfdbf7ff;
   --secondColor: #b7d5d4ff;
   --finalColor: #488286ff;
   --pathColor: #42273bff;
@@ -10,7 +10,7 @@
   width: 30px;
   height: 30px;
   outline: 1px solid var(--navBarGrid);
-  display: inline-block;
+  display: table-cell;
 }
 
 .finish {
@@ -25,7 +25,7 @@
 
 .visited {
   animation-name: visitedAnimation;
-  animation-duration: .8s;
+  animation-duration: 0.8s;
   animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
@@ -92,8 +92,6 @@ $opal: #abc8c0ff;
 $old-lavender: #70566dff;
 $dark-purple: #42273bff; */
 
-
-
 /* @keyframes visitedAnimation {
   0% {
     transform: scale(0.3) rotate3d(1, 1, 0, 45deg);
@@ -119,10 +117,9 @@ $dark-purple: #42273bff; */
   }
 } */
 
-
 .wall {
   background-image: url("../../images/wall.png");
-  
+
   /* background-color: rgb(12, 53, 71); */
 
   /* animation-name: wallFlip;
@@ -180,7 +177,7 @@ $dark-purple: #42273bff; */
 
   100% {
     transform: skewY(180deg) scale(0.9);
-    
+
     background-color: var(--pathColor);
   }
 }
@@ -201,4 +198,3 @@ $dark-purple: #42273bff; */
     background-color: rgb(3, 145, 10);
   }
 } */
-
