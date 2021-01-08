@@ -6,14 +6,17 @@ import { NavLink } from "react-router-dom"
 import { visualizeAStar } from "../Algorithms/AStar"
 import { visualizeDepthFirstSearch } from "../Algorithms/DepthFirstSearch"
 import { visualizeDijkstra } from "../Algorithms/Dijkstra"
-import { clearGridClasses, getInitialGrid } from "../HelperFunctions/initialGrid"
+import {
+  clearGridClasses,
+  getInitialGrid,
+} from "../HelperFunctions/initialGrid"
 import {
   setAlgorithm,
   setFinishedRunning,
   setGrid,
   setIsRunning,
   setOffInfo,
-  setOnInfo
+  setOnInfo,
 } from "../Redux/actions"
 
 class NavBar extends React.Component {
@@ -49,7 +52,7 @@ class NavBar extends React.Component {
     let grid = this.props.grid
     switch (currentAlgorithm) {
       case "dijkstra":
-        console.log('running dijkstra')
+        console.log("running dijkstra")
         return visualizeDijkstra(this.props)
       case "a*":
         return visualizeAStar(this.props)
@@ -65,10 +68,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <>
-        <nav
-          class="nav-extended"
-          style={{ backgroundColor: "#70566dff" }}
-        >
+        <nav class="nav-extended" style={{ backgroundColor: "#70566dff" }}>
           <div class="nav-wrapper">
             <a href="#" class="brand-logo right">
               Pathfinding Algorithm Visualizer
@@ -76,7 +76,7 @@ class NavBar extends React.Component {
 
             <ul id="nav-mobile" class="hide-on-med-and-down">
               <li onClick={this.props.isRunning ? null : this.handleNewGrid}>
-                <NavLink to="/">
+                <NavLink to="/pathfinding-visualizer">
                   <div
                     style={
                       this.props.onInfo
@@ -84,11 +84,12 @@ class NavBar extends React.Component {
                         : { display: "block" }
                     }
                   >
-                    New Grid</div>
+                    Generate New Grid
+                  </div>
                 </NavLink>
               </li>
               <li onClick={this.props.isRunning ? null : this.handleVisualize}>
-                <NavLink to="/">
+                <NavLink to="/pathfinding-visualizer">
                   <div
                     style={
                       this.props.onInfo
@@ -96,7 +97,7 @@ class NavBar extends React.Component {
                         : { display: "block" }
                     }
                   >
-                    Visualize Algorithm
+                    Visualize!
                   </div>
                 </NavLink>
               </li>
@@ -104,70 +105,63 @@ class NavBar extends React.Component {
           </div>
           <div class="nav-content">
             <ul class="tabs tabs-transparent">
-              <li class="tab" onClick={
-                this.props.isRunning
-                  ? null
-                  : () => this.setAlgorithm("dijkstra")
-              }>
-                <NavLink to="/">
-                  <div
-
-                  >
-                    Dijkstra'S Algorithm
-                  </div>
+              <li
+                class="tab"
+                onClick={
+                  this.props.isRunning
+                    ? null
+                    : () => this.setAlgorithm("dijkstra")
+                }
+              >
+                <NavLink to="/pathfinding-visualizer">
+                  <div>Dijkstra'S Algorithm</div>
                 </NavLink>
               </li>
-              <li onClick={
-                this.props.isRunning
-                  ? null
-                  : () => this.setAlgorithm("a*")
-              } class="tab">
-                <NavLink to="/">
-                  <div
-
-                  >
-                    A*
-                  </div>
+              <li
+                onClick={
+                  this.props.isRunning ? null : () => this.setAlgorithm("a*")
+                }
+                class="tab"
+              >
+                <NavLink to="/pathfinding-visualizer">
+                  <div>A*</div>
                 </NavLink>
               </li>
-              <li class="tab" onClick={
-                this.props.isRunning
-                  ? null
-                  : () => this.setAlgorithm("bfs")
-              }>
-                <NavLink to="/">
-                  <div>
-                    Breath-First Search
-                  </div>
+              <li
+                class="tab"
+                onClick={
+                  this.props.isRunning ? null : () => this.setAlgorithm("bfs")
+                }
+              >
+                <NavLink to="/pathfinding-visualizer">
+                  <div>Breath-First Search</div>
                 </NavLink>
               </li>
-              <li class="tab" onClick={
-                this.props.isRunning
-                  ? null
-                  : () => this.setAlgorithm("dfs")
-              }>
-                <NavLink to="/">
-                  <div
-
-                  >
-                    Depth-First Search
-                  </div>
+              <li
+                class="tab"
+                onClick={
+                  this.props.isRunning ? null : () => this.setAlgorithm("dfs")
+                }
+              >
+                <NavLink to="/pathfinding-visualizer">
+                  <div>Depth-First Search</div>
                 </NavLink>
               </li>
-              <li class="hide-on-med-and-down tab" onClick={this.props.onInfo ? null : this.handleOnInfo}>
-                <NavLink to="/info">
-                  <div >
-                    Algorithm Info
-                  </div>
+              <li
+                class="hide-on-med-and-down tab"
+                onClick={this.props.onInfo ? null : this.handleOnInfo}
+              >
+                <NavLink to="/pathfinding-visualizer/info">
+                  <div>Algorithm Info</div>
                 </NavLink>
               </li>
-              <li class="right hide-on-med-and-down tab" onClick={this.props.onInfo ? null : this.handleOnInfo}>
+              <li
+                class="right hide-on-med-and-down tab"
+                onClick={this.props.onInfo ? null : this.handleOnInfo}
+              >
                 <a href="https://dyson1602.github.io/sorting-visualizer/">
-                  <div >
-                    Sorting Algorithm Visualizer
-                  </div>
+                  <div>Sorting Algorithm Visualizer</div>
                 </a>
-
               </li>
             </ul>
           </div>

@@ -9,8 +9,11 @@ function App() {
     <>
       <NavBar />
       <Switch>
-        <Route path="/info" component={InfoPageContainer} />
-        <Route path="/" component={BodyContainer} />
+        <Route
+          path="/pathfinding-visualizer/info"
+          component={InfoPageContainer}
+        />
+        <Route path="/pathfinding-visualizer" component={BodyContainer} />
       </Switch>
     </>
   )
