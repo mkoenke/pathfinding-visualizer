@@ -36,7 +36,7 @@ your browser and play around with it before installation.
 
 ## Summary
 
-### Setting Up the Sort
+### Setting Up the Grid
 
 <img src="./src/images/SetUp.gif" />
 
