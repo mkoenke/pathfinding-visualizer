@@ -1,70 +1,79 @@
-# Getting Started with Create React App
+# Pathfinding Algorithm Visualizer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Table of Contents
 
-## Available Scripts
+- [Contributors](#contributors)
+- [Installation](#installation)
+- [Deployed Link](#deployed-link)
+- [Summary](#summary)
+  - [Setting Up the Sort](#setting-up-the-sort)
+  - [Sort!](#sort!)
+  - [Example Algorithms](#example-algorithms)
+  - [Info Page](#info-page)
 
-In the project directory, you can run:
+## Contributors
 
-### `yarn start`
+<a href="https://github.com/dyson1602" >Christopher Michael Clark</a> & <a href="https://github.com/mkoenke" >Mary Rachael Koenke</a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+If you wish to install on your local machine, first fork and clone the repo.
+After you have completed cloning, simply run the following `npm` commands to get
+it running on a local server:
 
-### `yarn test`
+npm
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+$ cd <app's main directory>
+$ npm install
+$ npm start
+```
 
-### `yarn build`
+## Deployed Link
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Click <a href="https://mkoenke.github.io/pathfinding-visualizer/">here</a> to vist our app in
+your browser and play around with it before installation.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Summary
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Setting Up the Sort
 
-### `yarn eject`
+<img src="./src/images/SetUp.gif" />
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+When the user first lands on Pathfinding Algorithm Visualizer they are met with a
+series of options. There is a **_start node_** and **_end node_** that allows the user to change the starting and ending point of the pathfinder. The user can click and drag anywhere on the graph to generate walls on the grid. To reset the grid, the user can click on
+`Generate New Grid`.
+<br/>
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Visualize!
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<img src="./src/images/InsertionSortRM.gif" />
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The user can then select a pathfinding algorithm method from the choices in the tool bar.
+Once a selection has been made a user can click the `Visualize!`
+button. Upon clicking it the algorithm will begin to go to work. During this time
+all other options are muted except for the Algorithm Info link,
+and the <a href="https://github.com/dyson1602/sorting-visualizer">Sorting Algorithm Visualizer</a> link.
+<br/>
 
-## Learn More
+### Example Algorithms
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+#### Dijkstra's Algorithm
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img src="./src/images/Dijkstras.gif" />
 
-### Code Splitting
+#### A\*
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+<img src="./src/images/A_2.gif" />
 
-### Analyzing the Bundle Size
+#### Breadth-First Search
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+<img src="./src/images/bfsgif.gif" />
 
-### Making a Progressive Web App
+### Info Page
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<img src="./src/images/Info.gif" />
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+When the user clicks **_Algorithm Info_** they are directed to a separate page.
+This page has a series of cards that the user can click on to display information
+about each algorithm. The information includes time complexity, space complexity, and psuedocode desciptions as to how the algorithm functions.
