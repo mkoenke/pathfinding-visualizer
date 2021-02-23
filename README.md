@@ -47,8 +47,6 @@ series of options. There is a **_start node_** and **_end node_** that allows th
 
 ### Visualize!
 
-<img src="./src/images/InsertionSortRM.gif" />
-
 The user can then select a pathfinding algorithm method from the choices in the tool bar.
 Once a selection has been made a user can click the `Visualize!`
 button. Upon clicking it the algorithm will begin to go to work. During this time
@@ -66,9 +64,9 @@ and the <a href="https://github.com/dyson1602/sorting-visualizer">Sorting Algori
 
 <img src="./src/images/A_2.gif" />
 
-#### Breadth-First Search
+#### Depth-First Search
 
-<img src="./src/images/bfsgif.gif" />
+<img src="./src/images/DFSreadme.gif" />
 
 ### Info Page
 
