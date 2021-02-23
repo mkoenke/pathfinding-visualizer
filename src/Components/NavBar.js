@@ -68,7 +68,14 @@ class NavBar extends React.Component {
   render() {
     return (
       <>
-        <nav class="nav-extended" style={{ backgroundColor: "#70566dff" }}>
+        <nav
+          class="nav-extended"
+          style={{
+            backgroundColor: "#70566dff",
+            paddingLeft: "15px",
+            paddingRight: "15px",
+          }}
+        >
           <div class="nav-wrapper">
             <a href="#" class="brand-logo right">
               Pathfinding Algorithm Visualizer
